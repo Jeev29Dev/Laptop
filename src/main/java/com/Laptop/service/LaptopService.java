@@ -1,11 +1,14 @@
 package com.Laptop.service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.naming.NameNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.Laptop.dao.LaptopDao;
 import com.Laptop.entity.Laptop;
@@ -59,6 +62,11 @@ public List<Laptop> getmp() {
 public List<Laptop> getmn() {
 	return ld.getmn();
 } 
+public List<Laptop> getfirst() {
+	List<Laptop> x=ld.getvalues();
+	List<Laptop> first=x.stream().sorted(Comparator.comparingInt(Laptop::getPrice)).limit(1).collect(Collectors.toList());
+	return first;
+}
 public List<Laptop> getxname(String a) throws NameNotFoundException {
 	if(ld.getxname(a).isEmpty()) {
 		throw new NameNotFoundException("Invalid Entry");
