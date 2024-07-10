@@ -84,6 +84,11 @@ public List<Laptop> getmn() {
 public List<Laptop> getfirst() {
 	return ls.getfirst();
 }
+@GetMapping(value="/getfname")
+public List<Laptop> getfname() {
+	return ls.getfname();
+}
+	
 @GetMapping(value="/getvxname/{a}")
 public List<Laptop> getxname(@PathVariable String a) throws NameNotFoundException {
 	return ls.getxname(a);
