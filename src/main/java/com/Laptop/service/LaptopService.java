@@ -67,6 +67,11 @@ public List<Laptop> getfirst() {
 	List<Laptop> first=x.stream().sorted(Comparator.comparingInt(Laptop::getPrice)).limit(1).collect(Collectors.toList());
 	return first;
 }
+public List<Laptop> getfname() {
+	List<Laptop> x=ld.getvalues();
+	List<Laptop> firstN=x.stream().sorted(Comparator.comparingInt(Laptop::getName)).limit(3).collect(Collectors.toList());
+	return firstN;
+}	
 public List<Laptop> getxname(String a) throws NameNotFoundException {
 	if(ld.getxname(a).isEmpty()) {
 		throw new NameNotFoundException("Invalid Entry");
